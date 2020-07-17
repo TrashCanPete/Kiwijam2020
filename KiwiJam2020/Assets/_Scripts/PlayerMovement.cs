@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         rot.x += pitch;
         rot.x = Mathf.Clamp(rot.x, -45, 45);
         rot.y += yaw;
+        rot.y = Mathf.Clamp(rot.y, -45, 45);
         rb.transform.rotation = Quaternion.Euler(rot);
     }
     public void Movement()
