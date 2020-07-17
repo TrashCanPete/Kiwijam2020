@@ -16,21 +16,35 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Vector3 baseVelocity;
+
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float maxSpeedValue;
+    private Vector3 maxSpeed;
+    private Vector3 boost;
+    [SerializeField] private float boostSpeed;
+    [SerializeField] private float boostSpeedValue;
     private Rigidbody rb;
     [SerializeField] private float offset;
     [SerializeField] private float camFollowDist;
     [SerializeField] private float camHeightDist;
 
-    [SerializeField] private Vector3 rot;
-    [SerializeField] private float pitch;
-    [SerializeField] private float yaw;
+    private Vector3 rot;
+    private float pitch;
+    private float yaw;
+
+    [SerializeField] private bool isBoosting;
+
+    [SerializeField] GameObject camAnchor;
 
     public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        boost = transform.forward * boostSpeed;
+        maxSpeed = transform.forward * maxSpeedValue;
+        isBoosting = false;
         rot = transform.eulerAngles;
         rb = GetComponent<Rigidbody>();
         endText.SetActive(false);
@@ -40,14 +54,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CamFollow();
-        PlayerInputs();
-        //transform.Translate (Vector3.forward * speed * Time.deltaTime);
+
         playerSpeed = baseVelocity.magnitude;
         baseVelocity = (rb.transform.forward * speed);
         
         pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
         yaw = rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
-
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isBoosting = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isBoosting = false;
+        }
 
     }
     private void FixedUpdate()
@@ -55,14 +75,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         PlayerRotation();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Chaser")
-        {
-            endText.SetActive(true);
-            Time.timeScale = 0;
-        }
-    }
+
     public void PlayerRotation()
     {
         rot.x += pitch;
@@ -74,21 +87,62 @@ public class PlayerMovement : MonoBehaviour
     public void Movement()
     {
         rb.velocity = baseVelocity;
+        if (isBoosting == false)
+        {
+            rb.velocity = transform.forward * speed;
+            //StopCoroutine(BoostingLoop());
+            //StartCoroutine(ReducingSpeed());
+            if(playerSpeed > speed)
+            {
+                Debug.Log("bigger than speed");
+                baseVelocity.z -= 1;
+                rb.velocity -= transform.forward * 1;
+            }
+            
+        }
+        else if (isBoosting == true)
+        {
+            StartCoroutine(BoostingLoop());
 
+        }
 
     }
-    public void PlayerInputs()
+
+    IEnumerator BoostingLoop()
+    {
+        while (true)
+        {
+            //baseVelocity += transform.forward * boostSpeedValue;
+            rb.velocity += transform.forward * boostSpeedValue;
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+    IEnumerator ReducingSpeed()
+    {
+        while (playerSpeed > speed)
+        {
+            rb.velocity -= transform.forward * 5;
+            yield return new WaitForSeconds(1);
+        }
+        StopCoroutine(ReducingSpeed());
+    }
+    public void ReduceSpeed()
     {
 
-
-
-
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Chaser")
+        {
+            endText.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
     public void CamFollow()
     {
         //Camera.main.fieldOfView = Mathf.Abs(playerSpeed / offset + cameraSpeedOffset);
         //Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * (camHeightDist);
+        Vector3 moveCamTo = camAnchor.transform.position + transform.forward * camFollowDist + Vector3.up * (camHeightDist);
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
     }
