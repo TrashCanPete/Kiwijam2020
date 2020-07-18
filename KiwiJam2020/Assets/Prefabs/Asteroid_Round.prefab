@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7637326184065678871}
   - component: {fileID: 1487943849409578017}
   - component: {fileID: 5159634679208540376}
+  - component: {fileID: 2960736100811693547}
   m_Layer: 0
   m_Name: Asteroid_Round
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2960736100811693547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892304495004404740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295d02b02b9627842b9896988ee2351c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTimer: 10

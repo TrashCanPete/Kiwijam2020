@@ -8,19 +8,17 @@ public class PlayerMovement : MonoBehaviour
     //player moving forward
     //standard speeed, max boost speed, slowest braking speed
     //health goes down from boost but slowly goes back up
+    public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;
 
-    [SerializeField] private float vertical;
-    [SerializeField] private float horizontal;
-
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private Vector3 baseVelocity;
+    private Vector3 baseVelocity;
+    private Vector3 playerVelocity;
 
     [SerializeField] private float playerSpeed;
     [SerializeField] private float maxSpeedValue;
-    private Vector3 maxSpeed;
-    private Vector3 boost;
+
     [SerializeField] private float boostSpeed;
     [SerializeField] private float boostSpeedValue;
     private Rigidbody rb;
@@ -37,13 +35,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject camAnchor;
 
     public Transform target;
+    public Slider health;
+    public float engineHealth;
+    [SerializeField] private float maxDamage;
+    [SerializeField] private float repairRate;
+    [SerializeField] private float damageRate;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        boost = transform.forward * boostSpeed;
-        maxSpeed = transform.forward * maxSpeedValue;
+        engineAlive = true;
         isBoosting = false;
         rot = transform.eulerAngles;
         rb = GetComponent<Rigidbody>();
@@ -53,25 +54,39 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        health.value = engineHealth;
+        health.value = Mathf.Clamp(health.value, 0, 1);
+        engineHealth = Mathf.Clamp(health.value, 0, 1);
         CamFollow();
 
         playerSpeed = baseVelocity.magnitude;
         baseVelocity = (rb.transform.forward * speed);
-        
-        pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-        yaw = rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (engineAlive)
         {
-            isBoosting = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            isBoosting = false;
-        }
+            pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
+            yaw = rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
 
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                isBoosting = true;
+
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                isBoosting = false;
+
+            }
+        }
+        if(engineHealth >= maxDamage)
+        {
+            engineAlive = false;
+            rb.velocity = Vector3.zero;
+        }
     }
     private void FixedUpdate()
     {
+        playerVelocity = rb.velocity;
         Movement();
         PlayerRotation();
     }
@@ -89,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = baseVelocity;
         if (isBoosting == false)
         {
+            engineHealth -= repairRate * Time.deltaTime;
             rb.velocity = transform.forward * speed;
 
             if(playerSpeed > speed)
@@ -101,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isBoosting == true)
         {
+            engineHealth += damageRate * Time.deltaTime;
             StartCoroutine(BoostingLoop());
 
         }

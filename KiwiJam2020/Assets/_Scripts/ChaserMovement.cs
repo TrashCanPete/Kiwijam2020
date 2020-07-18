@@ -11,6 +11,7 @@ public class ChaserMovement : MonoBehaviour
     [SerializeField] private Vector3 baseVelocity;
     public GameObject player;
     private Vector3 movementPosition;
+    public float chaserSideSpeed;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,20 +20,16 @@ public class ChaserMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementPosition = new Vector3(Mathf.Lerp(transform.position.x, player.transform.position.x, 0.2f), Mathf.Lerp(transform.position.y, player.transform.position.y, 0.2f), transform.position.z);
+        movementPosition = new Vector3(player.transform.position.x,player.transform.position.y, transform.position.z);
 
         chaserSpeed = baseVelocity.magnitude;
         baseVelocity = (rb.transform.forward * speed);
 
     }
-    void MoveChaser()
-    {
-
-    }
     private void FixedUpdate()
     {
         rb.velocity = baseVelocity;
-        transform.position = movementPosition;
+        transform.position = Vector3.Lerp(transform.position, movementPosition, chaserSideSpeed * Time.deltaTime);
     }
 
 
