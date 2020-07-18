@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,10 +43,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float damageRate;
 
     public ChaserMovement chaserScript;
+    public GameObject engineCritical;
+    public GameObject engineDanger;
+    [SerializeField] private float criticalValue;
+    [SerializeField] private float DangerValue;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        engineCritical.SetActive(false);
+        engineDanger.SetActive(false);
         engineAlive = true;
         isBoosting = false;
         rot = transform.eulerAngles;
@@ -79,7 +87,22 @@ public class PlayerMovement : MonoBehaviour
                 isBoosting = false;
 
             }
+            if (health.value >= criticalValue)
+            {
+                engineCritical.SetActive(true);
+                engineDanger.SetActive(false);
+            }
+            else if (health.value < criticalValue && health.value > DangerValue)
+            {
+                engineCritical.SetActive(false);
+                engineDanger.SetActive(true);
+            }
+            else if (health.value < DangerValue)
+            {
+                engineDanger.SetActive(false);
+            }
         }
+
         if(engineHealth >= maxDamage)
         {
             engineAlive = false;
@@ -87,7 +110,10 @@ public class PlayerMovement : MonoBehaviour
             isBoosting = false;
             chaserScript.chaserSideSpeed = 25;
             chaserScript.speed = 36;
+            engineDanger.SetActive(false);
+            engineCritical.SetActive(false);
         }
+
     }
     private void FixedUpdate()
     {
@@ -155,8 +181,15 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Chaser")
         {
             endText.SetActive(true);
-            Time.timeScale = 0;
+            Invoke("BackToMenu", 1);
+
+
         }
+    }
+    void BackToMenu()
+    {
+
+        SceneManager.LoadScene(0);
     }
     public void CamFollow()
     {
