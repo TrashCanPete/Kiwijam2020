@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2359551563285589591}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 2
+  simulationSpeed: 20
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 500
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -983,20 +983,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: -1.0757419
+          outSlope: -1.0757419
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.27430555
         - serializedVersion: 3
-          time: 1
+          time: 0.6111145
           value: 0
-          inSlope: 1
-          outSlope: 1
+          inSlope: -1.7250621
+          outSlope: -1.7250621
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.29545847
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1305,9 +1305,9 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 0.82433367, g: 0, b: 1, a: 1}
         key1: {r: 0.4069427, g: 0.4486796, b: 1, a: 1}
-        key2: {r: 0, g: 0.8861277, b: 1, a: 1}
-        key3: {r: 0.39055356, g: 0.7250474, b: 0.6094464, a: 1}
-        key4: {r: 0.6286921, g: 0.6268293, b: 0.3713079, a: 1}
+        key2: {r: 0, g: 0.8861277, b: 1, a: 0.53333336}
+        key3: {r: 0.39055356, g: 0.7250474, b: 0.6094464, a: 0.37254903}
+        key4: {r: 0.6286921, g: 0.6268293, b: 0.3713079, a: 0}
         key5: {r: 0.764151, g: 0.56515956, b: 0.16220188, a: 0}
         key6: {r: 1, g: 0.47368675, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
@@ -1322,7 +1322,7 @@ ParticleSystem:
         atime0: 0
         atime1: 11180
         atime2: 22937
-        atime3: 37779
+        atime3: 39514
         atime4: 55512
         atime5: 65535
         atime6: 0
