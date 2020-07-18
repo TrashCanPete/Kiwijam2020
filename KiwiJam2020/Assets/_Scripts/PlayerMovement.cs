@@ -43,15 +43,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float damageRate;
 
     public ChaserMovement chaserScript;
+    public ParticleManager particleManager;
+
     public GameObject engineCritical;
     public GameObject engineDanger;
     [SerializeField] private float criticalValue;
     [SerializeField] private float DangerValue;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
+        particleManager = GetComponentInChildren<ParticleManager>();
         engineCritical.SetActive(false);
         engineDanger.SetActive(false);
         engineAlive = true;
@@ -64,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         health.value = engineHealth;
         health.value = Mathf.Clamp(health.value, 0, 1);
         engineHealth = Mathf.Clamp(health.value, 0, 1);
@@ -105,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(engineHealth >= maxDamage)
         {
+            particleManager.explode = true;
             engineAlive = false;
             rb.velocity = Vector3.zero;
             isBoosting = false;
