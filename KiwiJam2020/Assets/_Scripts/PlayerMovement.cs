@@ -90,8 +90,7 @@ public class PlayerMovement : MonoBehaviour
         if (isBoosting == false)
         {
             rb.velocity = transform.forward * speed;
-            //StopCoroutine(BoostingLoop());
-            //StartCoroutine(ReducingSpeed());
+
             if(playerSpeed > speed)
             {
                 Debug.Log("bigger than speed");
@@ -112,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
     {
         while (true)
         {
-            //baseVelocity += transform.forward * boostSpeedValue;
             rb.velocity += transform.forward * boostSpeedValue;
             yield return new WaitForSeconds(0.25f);
         }
