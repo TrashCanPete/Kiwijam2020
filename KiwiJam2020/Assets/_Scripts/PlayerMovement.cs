@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //camera states
     //Engine Exploding
     //Colliding with Asteroidss
     public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;
-    
+
+    public GameObject walls;
 
     [SerializeField] private float rotationSpeed;
     private Vector3 baseVelocity;
@@ -54,11 +54,15 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Vector3 addForce;
 
+    public GameObject shipEngine;
+    public GameObject ship;
+    public GameObject enginePieces;
+    public GameObject shipPieces;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        walls.SetActive(false);
         minVelocity = transform.forward * 26;
         maxVelocity = transform.forward * 50;
         particleManager = GetComponentInChildren<ParticleManager>();
@@ -74,9 +78,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
         health.value = engineHealth;
         health.value = Mathf.Clamp(health.value, 0, 1);
         engineHealth = Mathf.Clamp(health.value, 0, 1);
@@ -125,6 +126,12 @@ public class PlayerMovement : MonoBehaviour
             chaserScript.speed = 36;
             engineDanger.SetActive(false);
             engineCritical.SetActive(false);
+
+            //engine
+            var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
+            Destroy(shipEngine.gameObject);
+            Instantiate(shipPieces, tempPos, Quaternion.identity);
+
         }
 
     }
@@ -191,15 +198,19 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Anchor2")
         {
             camF.anchorNumber = 1;
+            walls.SetActive(true);
         }
         if(other.tag == "Anchor3")
         {
             camF.anchorNumber = 2;
+            walls.SetActive(false);
         }
     }
     void BackToMenu()
     {
         SceneManager.LoadScene(0);
     }
+
+
 
 }
