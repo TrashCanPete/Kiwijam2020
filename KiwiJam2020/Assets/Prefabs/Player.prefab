@@ -303,7 +303,7 @@ MonoBehaviour:
   maxVelocity: {x: 0, y: 0, z: 0}
   playerSpeed: 0
   maxSpeedValue: 50
-  boostSpeed: 0
+  boostSpeed: 50
   boostSpeedValue: 10
   offset: 0
   camFollowDist: 5
