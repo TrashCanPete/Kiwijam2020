@@ -260,7 +260,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8211920495401126044}
-  m_LocalRotation: {x: -0, y: 0.00000004470348, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -298,6 +298,9 @@ MonoBehaviour:
   speed: 26
   endText: {fileID: 0}
   rotationSpeed: 125
+  playerVelocity: {x: 0, y: 0, z: 0}
+  minVelocity: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   playerSpeed: 0
   maxSpeedValue: 50
   boostSpeed: 0
@@ -319,6 +322,7 @@ MonoBehaviour:
   engineDanger: {fileID: 0}
   criticalValue: 0.75
   DangerValue: 0.5
+  addForce: {x: 0, y: 0, z: 0}
 --- !u!54 &8211920495401126016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1033,6 +1037,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8211920496834713889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211920496698573574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f591cab78fe0ae346bb724375dc056ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explode: 0
 --- !u!1 &8211920496834348252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,19 +1128,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8211920496834713889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8211920496698573574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f591cab78fe0ae346bb724375dc056ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explode: 0
 --- !u!1 &8211920497182346590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,10 +1261,6 @@ PrefabInstance:
     - target: {fileID: 5934409245384846, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1113226389, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
-      propertyPath: EmissionModule.enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1113226389, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
       propertyPath: moveWithTransform
