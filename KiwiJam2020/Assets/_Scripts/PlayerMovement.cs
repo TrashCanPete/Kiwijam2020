@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
     private Vector3 baseVelocity;
-    private Vector3 playerVelocity;
+    [SerializeField] private Vector3 playerVelocity;
+    [SerializeField] private Vector3 minVelocity, maxVelocity;
 
     [SerializeField] private float playerSpeed;
     [SerializeField] private float maxSpeedValue;
@@ -50,11 +51,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float criticalValue;
     [SerializeField] private float DangerValue;
 
+    [SerializeField] private Vector3 addForce;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        minVelocity = transform.forward * 26;
+        maxVelocity = transform.forward * 50;
         particleManager = GetComponentInChildren<ParticleManager>();
         engineCritical.SetActive(false);
         engineDanger.SetActive(false);
@@ -68,14 +72,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         health.value = engineHealth;
         health.value = Mathf.Clamp(health.value, 0, 1);
         engineHealth = Mathf.Clamp(health.value, 0, 1);
         CamFollow();
 
-        playerSpeed = baseVelocity.magnitude;
+
         baseVelocity = (rb.transform.forward * speed);
+        playerSpeed = baseVelocity.magnitude;
         if (engineAlive)
         {
             pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
@@ -106,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
                 engineDanger.SetActive(false);
             }
         }
-
+        
         if(engineHealth >= maxDamage)
         {
             particleManager.explode = true;
@@ -122,9 +127,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         playerVelocity = rb.velocity;
         Movement();
         PlayerRotation();
+    }
+    void VelocityClamp()
+    {
+
     }
 
     public void PlayerRotation()
@@ -137,7 +147,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Movement()
     {
-        rb.velocity = baseVelocity;
+        rb.AddForce(baseVelocity + addForce);
+        //rb.velocity = baseVelocity;
+        rb.velocity -= transform.forward * 1;
         if (isBoosting == false)
         {
             engineHealth -= repairRate * Time.deltaTime;
@@ -164,23 +176,12 @@ public class PlayerMovement : MonoBehaviour
     {
         while (true)
         {
-            rb.velocity += transform.forward * boostSpeedValue;
+            //rb.velocity += transform.forward * boostSpeedValue;
+            addForce = transform.forward * boostSpeed;
             yield return new WaitForSeconds(0.25f);
         }
     }
-    IEnumerator ReducingSpeed()
-    {
-        while (playerSpeed > speed)
-        {
-            rb.velocity -= transform.forward * 5;
-            yield return new WaitForSeconds(1);
-        }
-        StopCoroutine(ReducingSpeed());
-    }
-    public void ReduceSpeed()
-    {
 
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Chaser")
