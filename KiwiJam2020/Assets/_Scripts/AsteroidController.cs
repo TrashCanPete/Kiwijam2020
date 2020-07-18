@@ -9,19 +9,24 @@ public class AsteroidController : MonoBehaviour
     private int ySpin;
     private int zSpin;
     [SerializeField] private float spinSpeed;
+    private Quaternion targetRotation;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        transform.rotation = Quaternion.Euler(xSpin, ySpin, zSpin);
+        xSpin = Random.Range(0, 360);
+        ySpin = Random.Range(0, 360);
+        zSpin = Random.Range(0, 360);
+        rb = GetComponent<Rigidbody>();
+        rb.angularVelocity = new Vector3(xSpin, ySpin, zSpin) / 5 * Time.deltaTime;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        xSpin = Random.Range(0, 360);
-        ySpin = Random.Range(0, 360);
-        zSpin = Random.Range(0, 360);
-        transform.rotation = Quaternion.Euler(xSpin, ySpin, zSpin);
+
+
 
         Invoke("DestroyOBJ", destroyTimer);
     }
