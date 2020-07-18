@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Engine Exploding
     //Colliding with Asteroidss
+    //Asteroids destroying on trigger
+    //starting chaser further back
     public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;
@@ -62,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        walls.SetActive(false);
         minVelocity = transform.forward * 26;
         maxVelocity = transform.forward * 50;
         particleManager = GetComponentInChildren<ParticleManager>();
@@ -198,12 +198,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Anchor2")
         {
             camF.anchorNumber = 1;
-            walls.SetActive(true);
+
         }
         if(other.tag == "Anchor3")
         {
             camF.anchorNumber = 2;
-            walls.SetActive(false);
+
         }
     }
     void BackToMenu()
