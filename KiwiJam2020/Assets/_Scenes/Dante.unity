@@ -1416,6 +1416,16 @@ PrefabInstance:
       propertyPath: engineDanger
       value: 
       objectReference: {fileID: 759657509}
+    - target: {fileID: 55158183357098911, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bce25ce25f63ebf4e8db62067fe68a4e, type: 2}
+    - target: {fileID: 404293620341720256, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bce25ce25f63ebf4e8db62067fe68a4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d9bc95264d2e348997b3dd97c295b2, type: 3}
 --- !u!1001 &9179013124886113518
