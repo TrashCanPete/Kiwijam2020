@@ -1435,6 +1435,7 @@ MonoBehaviour:
   maxDamage: 1
   repairRate: 0.1
   damageRate: 0.5
+  chaserScript: {fileID: 1475791136}
 --- !u!65 &1288808593
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float repairRate;
     [SerializeField] private float damageRate;
 
+    public ChaserMovement chaserScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
         {
             engineAlive = false;
             rb.velocity = Vector3.zero;
+            isBoosting = false;
+            chaserScript.chaserSideSpeed = 25;
+            chaserScript.speed = 36;
         }
     }
     private void FixedUpdate()

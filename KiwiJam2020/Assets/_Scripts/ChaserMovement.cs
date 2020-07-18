@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaserMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     private Rigidbody rb;
     [SerializeField] private float chaserSpeed;
 
@@ -14,6 +14,7 @@ public class ChaserMovement : MonoBehaviour
     public float chaserSideSpeed;
     void Start()
     {
+        chaserSideSpeed = 5;
         rb = GetComponent<Rigidbody>();
     }
 
