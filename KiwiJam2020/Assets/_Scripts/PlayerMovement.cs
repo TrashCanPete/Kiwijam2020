@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //player moving forward
-    //standard speeed, max boost speed, slowest braking speed
-    //health goes down from boost but slowly goes back up
+    //camera states
+    //Engine Exploding
+    //Colliding with Asteroidss
     public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;

@@ -1288,18 +1288,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a6aa2ec732ab7489f96b98cff14655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minHori: -70
-  maxHori: 70
-  minVert: -70
-  maxVert: 50
-  Asteroid1: {fileID: 6892304495004404740, guid: b3a1d1e00a6c66044bf0b905337ee1e2,
-    type: 3}
+  minHori: -90
+  maxHori: 90
+  minVert: -90
+  maxVert: 90
+  Obstacles:
+  - {fileID: 6892304495004404740, guid: b3a1d1e00a6c66044bf0b905337ee1e2, type: 3}
+  - {fileID: 582009379926508732, guid: 8811b1637f0f7cb44a5e6b124c4e9c53, type: 3}
+  - {fileID: 1034810828664586258, guid: 3e52fa5b98685b74cbad0fc0d34cce96, type: 3}
   timeBetweenSpawn: 1
-  minDepth: 150
-  maxDepth: 160
+  minDepth: 280
+  maxDepth: 300
   playerPos: {fileID: 1288808591}
-  offSet: 150
-  spawnRate: 25
+  offSet: 200
+  spawnRate: 5
 --- !u!4 &2007942354
 Transform:
   m_ObjectHideFlags: 0
@@ -1430,6 +1432,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 9179013123628787150, guid: 5b175e1f103d2c645a87d829b5054c70,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1288808591}
     - target: {fileID: 9179013123628787151, guid: 5b175e1f103d2c645a87d829b5054c70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1485,10 +1492,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9179013123628787150, guid: 5b175e1f103d2c645a87d829b5054c70,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1288808591}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b175e1f103d2c645a87d829b5054c70, type: 3}

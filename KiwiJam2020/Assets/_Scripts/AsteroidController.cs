@@ -18,7 +18,7 @@ public class AsteroidController : MonoBehaviour
         ySpin = Random.Range(0, 360);
         zSpin = Random.Range(0, 360);
         rb = GetComponent<Rigidbody>();
-        rb.angularVelocity = new Vector3(xSpin, ySpin, zSpin) / 5 * Time.deltaTime;
+        rb.angularVelocity = new Vector3(xSpin, ySpin, zSpin) / (spinSpeed * 50) * Time.deltaTime;
 
     }
 

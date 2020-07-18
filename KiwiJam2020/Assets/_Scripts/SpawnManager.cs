@@ -6,27 +6,32 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private int minHori, maxHori;
     [SerializeField] private int minVert, maxVert;
-    public GameObject Asteroid1;
+    public GameObject[] Obstacles;
     [SerializeField] private float timeBetweenSpawn;
     [SerializeField] private int minDepth, maxDepth;
     public GameObject playerPos;
     private Vector3 movementPosition;
     [SerializeField] private int offSet;
 
+    private Vector3 newSpawnPosition;
     [SerializeField] private float spawnRate;
     private float spawnTimer;
+    private int rand;
 
+    private int difCou;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(SpawnObstacleDelay());
+        InvokeRepeating("Difficulty", 2, 4);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(spawnTimerCount());
+        spawnRate = Mathf.Clamp(spawnRate,0.25f,6);
         movementPosition = new Vector3(playerPos.transform.position.x, playerPos.transform.position.y, playerPos.transform.position.z + offSet);
         SpawnAsteroid();
         transform.position = movementPosition;
@@ -34,21 +39,25 @@ public class SpawnManager : MonoBehaviour
     void SpawnAsteroid()
     {
         Vector3 spawnPosition = new Vector3((transform.position.x + Random.Range(minHori, maxHori)), (transform.position.y + Random.Range(minVert, maxVert)), (transform.position.z + Random.Range(minVert, maxVert)));
-        if (spawnTimer > spawnRate)
-        {
-            Instantiate(Asteroid1, transform.forward + spawnPosition, Quaternion.identity);
-            spawnTimer = 0;
-        }
-
+        newSpawnPosition = spawnPosition;
     }
-    IEnumerator spawnTimerCount()
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(timeBetweenSpawn);
-            spawnTimer++;
-        }
 
+    void Difficulty()
+    {
+        spawnRate -= 0.25f;
+    }
+
+    void SpawnObstacle()
+    {
+        Instantiate(Obstacles[Random.Range(0, Obstacles.Length)], transform.forward + newSpawnPosition, Quaternion.identity);
+    }
+    IEnumerator SpawnObstacleDelay()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            SpawnObstacle();
+        }
     }
 
 }
