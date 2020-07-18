@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Chaser
   - AsteroidDestroy
+  - Anchor1
+  - Anchor2
+  - Anchor3
   layers:
   - Default
   - TransparentFX

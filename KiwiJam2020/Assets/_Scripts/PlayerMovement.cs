@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;
+    
 
     [SerializeField] private float rotationSpeed;
     private Vector3 baseVelocity;
@@ -25,8 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float boostSpeedValue;
     private Rigidbody rb;
     [SerializeField] private float offset;
-    [SerializeField] private float camFollowDist;
-    [SerializeField] private float camHeightDist;
+
 
     private Vector3 rot;
     private float pitch;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool isBoosting;
 
-    [SerializeField] GameObject camAnchor;
+
 
     public Transform target;
     public Slider health;
@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     public ChaserMovement chaserScript;
     public ParticleManager particleManager;
+    public CamFollow camF;
 
     public GameObject engineCritical;
     public GameObject engineDanger;
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         minVelocity = transform.forward * 26;
         maxVelocity = transform.forward * 50;
         particleManager = GetComponentInChildren<ParticleManager>();
@@ -73,14 +75,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+
+
         health.value = engineHealth;
         health.value = Mathf.Clamp(health.value, 0, 1);
         engineHealth = Mathf.Clamp(health.value, 0, 1);
-        CamFollow();
-
 
         baseVelocity = (rb.transform.forward * speed);
         playerSpeed = baseVelocity.magnitude;
+
         if (engineAlive)
         {
             pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
@@ -127,14 +130,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
         playerVelocity = rb.velocity;
         Movement();
         PlayerRotation();
-    }
-    void VelocityClamp()
-    {
-
     }
 
     public void PlayerRotation()
@@ -161,15 +159,12 @@ public class PlayerMovement : MonoBehaviour
                 baseVelocity.z -= 1;
                 rb.velocity -= transform.forward * 1;
             }
-            
         }
         else if (isBoosting == true)
         {
             engineHealth += damageRate * Time.deltaTime;
             StartCoroutine(BoostingLoop());
-
         }
-
     }
 
     IEnumerator BoostingLoop()
@@ -188,21 +183,23 @@ public class PlayerMovement : MonoBehaviour
         {
             endText.SetActive(true);
             Invoke("BackToMenu", 1);
-
-
+        }
+        if (other.tag == "Anchor1")
+        {
+            camF.anchorNumber = 0;
+        }
+        if (other.tag == "Anchor2")
+        {
+            camF.anchorNumber = 1;
+        }
+        if(other.tag == "Anchor3")
+        {
+            camF.anchorNumber = 2;
         }
     }
     void BackToMenu()
     {
-
         SceneManager.LoadScene(0);
     }
-    public void CamFollow()
-    {
-        //Camera.main.fieldOfView = Mathf.Abs(playerSpeed / offset + cameraSpeedOffset);
-        //Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
-        Vector3 moveCamTo = camAnchor.transform.position + transform.forward * camFollowDist + Vector3.up * (camHeightDist);
-        Camera.main.transform.position = moveCamTo;
-        Camera.main.transform.LookAt(transform.position);
-    }
+
 }

@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 1210315649}
   - component: {fileID: 1210315648}
   - component: {fileID: 1210315647}
+  - component: {fileID: 1210315650}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -694,6 +695,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 12.504001, y: 360, z: 0}
+--- !u!114 &1210315650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210315646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7ca4316bba85646bbab47f9f89b7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1288808591}
+  offset: {x: 0, y: 0, z: 0}
+  camFollowDist: 5
+  camHeightDist: 0
+  camAnchor:
+  - {fileID: 9179013124886113520}
+  - {fileID: 313585018}
+  - {fileID: 9179013124886113519}
+  anchorNumber: 0
 --- !u!1 &1288808591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8211920495401126044, guid: 07d9bc95264d2e348997b3dd97c295b2,
@@ -1328,6 +1350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8211920495401126044, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8211920495401126017, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1385,6 +1412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
+      propertyPath: camAnchor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
       propertyPath: endText
       value: 
       objectReference: {fileID: 665392603}
@@ -1392,7 +1424,7 @@ PrefabInstance:
         type: 3}
       propertyPath: camAnchor
       value: 
-      objectReference: {fileID: 313585018}
+      objectReference: {fileID: 0}
     - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
       propertyPath: target
@@ -1418,6 +1450,26 @@ PrefabInstance:
       propertyPath: engineDanger
       value: 
       objectReference: {fileID: 759657509}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: camAnchor.Array.data[0]
+      value: 
+      objectReference: {fileID: 9179013124886113520}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: camAnchor.Array.data[1]
+      value: 
+      objectReference: {fileID: 313585018}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: camAnchor.Array.data[2]
+      value: 
+      objectReference: {fileID: 9179013124886113519}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: camF
+      value: 
+      objectReference: {fileID: 1210315650}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d9bc95264d2e348997b3dd97c295b2, type: 3}
 --- !u!1001 &9179013124886113518
@@ -1494,3 +1546,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b175e1f103d2c645a87d829b5054c70, type: 3}
+--- !u!1 &9179013124886113519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4948445925017560878, guid: 5b175e1f103d2c645a87d829b5054c70,
+    type: 3}
+  m_PrefabInstance: {fileID: 9179013124886113518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9179013124886113520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7858404128106891818, guid: 5b175e1f103d2c645a87d829b5054c70,
+    type: 3}
+  m_PrefabInstance: {fileID: 9179013124886113518}
+  m_PrefabAsset: {fileID: 0}
