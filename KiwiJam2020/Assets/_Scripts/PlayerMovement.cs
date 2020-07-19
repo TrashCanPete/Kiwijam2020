@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator monsterAnim;
 
+    public bool mouthOpen;
 
     public bool engineAlive = true;
     [SerializeField] private float speed;
@@ -88,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         explosionParticle.Stop();
         boostParticle.Stop();
         engineBlowUp.Stop();
+
+        mouthOpen = false;
     }
 
     // Update is called once per frame
@@ -211,29 +215,67 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+
         if (other.tag == "Chaser")
         {
             endText.SetActive(true);
+            
             Invoke("BackToMenu", 1);
         }
         //inside
         if (other.tag == "Anchor1")
         {
             camF.anchorNumber = 0;
+            monsterAnim.SetTrigger("Close Mouth");
+            
         }
         //Entrance of mouth
         if (other.tag == "Anchor2")
         {
             camF.anchorNumber = 1;
+            if(mouthOpen == true)
+            {
+                HalfClosed();
+            }
+            else if(mouthOpen == false)
+            {
+                MouthOpen();
+            }
+            
+
 
         }
         //Outside
         if(other.tag == "Anchor3")
         {
+            
             camF.anchorNumber = 2;
-
+            if (mouthOpen == true)
+            {
+                HalfClosed();
+            }
+            else if (mouthOpen == false)
+            {
+                MouthOpen();
+            }
         }
+
     }
+
+    void MouthOpen()
+    {
+        mouthOpen = false;
+        monsterAnim.SetTrigger("Open Mouth");
+    }
+
+    void HalfClosed()
+    {
+        mouthOpen = true;
+        monsterAnim.SetTrigger("Half Close");
+    }
+
+
     void BackToMenu()
     {
         SceneManager.LoadScene(0);
