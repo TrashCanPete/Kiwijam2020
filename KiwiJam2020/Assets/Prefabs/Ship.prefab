@@ -23942,6 +23942,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipBody
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c51a4ce835aba224b9c48cfdcd6aeca0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c51a4ce835aba224b9c48cfdcd6aeca0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24021,6 +24026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShipEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 22e28b78fd2b4d94c9be3e422d136906,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 22e28b78fd2b4d94c9be3e422d136906,
         type: 3}
