@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        endText.SetActive(false);
         camF.anchorNumber = 2;
         minVelocity = transform.forward * 26;
         maxVelocity = transform.forward * 50;
@@ -103,6 +103,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
         health.value = engineHealth;
         health.value = Mathf.Clamp(health.value, 0, 1);
         engineHealth = Mathf.Clamp(health.value, 0, 1);
@@ -171,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
             //engine
             var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
             Destroy(shipEngine.gameObject);
-            Instantiate(shipPieces, tempPos, Quaternion.identity);
+            Instantiate(enginePieces, tempPos, Quaternion.identity);
             hasEngine = false;
             engineSparks.Play();
             engineBlowUp.Play();
@@ -271,9 +275,9 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Chaser")
         {
             camF.anchorNumber = 3;
-            //endText.SetActive(true);
+            endText.SetActive(true);
             closed();
-            Invoke("BackToMenu", 2.5f);
+            Invoke("BackToMenu", 2);
         }
         //inside
         if (other.tag == "Anchor1")
