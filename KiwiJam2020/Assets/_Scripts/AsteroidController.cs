@@ -11,9 +11,13 @@ public class AsteroidController : MonoBehaviour
     [SerializeField] private float spinSpeed;
     private Quaternion targetRotation;
     private Rigidbody rb;
+    public GameObject mesh;
+
+    public ParticleSystem explosion;
     // Start is called before the first frame update
     void Start()
     {
+        explosion.Stop();
         xSpin = Random.Range(0, 360);
         ySpin = Random.Range(0, 360);
         zSpin = Random.Range(0, 360);
@@ -40,7 +44,14 @@ public class AsteroidController : MonoBehaviour
         Debug.Log("Collide");
         if (other.tag == "Destroy")
         {
-            Destroy(this.gameObject);
+            
+            Destroy(mesh);
+            explosion.Play();
+            Invoke("DestroyRest", 2);
         }
+    }
+    void DestroyRest()
+    {
+        Destroy(this.gameObject);
     }
 }

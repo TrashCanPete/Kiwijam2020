@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject enginePieces;
     public GameObject shipPieces;
 
+    public AudioManager audio;
 
 
     // Start is called before the first frame update
@@ -166,6 +167,8 @@ public class PlayerMovement : MonoBehaviour
             jet.Stop();
             boostParticle.Stop();
 
+            rb.velocity = transform.forward * 24;
+
         }
 
         //closed
@@ -254,6 +257,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Chaser")
         {
+            camF.anchorNumber = 3;
             //endText.SetActive(true);
             closed();
             Invoke("BackToMenu", 2.5f);
@@ -270,6 +274,7 @@ public class PlayerMovement : MonoBehaviour
         {
             camF.anchorNumber = 1;
             HalfClosed();
+            audio.PlayAudio("Fog");
         }
         //Outside
         if(other.tag == "Anchor3")
