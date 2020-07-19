@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -850,8 +850,7 @@ MonoBehaviour:
   m_text: OVERLOAD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c16b200100ff6c84a91d95a1bfcaa2fe, type: 2}
-  m_sharedMaterial: {fileID: 2531478564575389518, guid: c16b200100ff6c84a91d95a1bfcaa2fe,
-    type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 8e30dcdaa86c17940beddee72741e44b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1552,7 +1551,7 @@ GameObject:
   - component: {fileID: 1807442685}
   - component: {fileID: 1807442684}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [Sora-Regular SDF Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [Sora-Regular SDF + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1600,7 +1599,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 1.615625
   m_canvasRenderer: {fileID: 1807442685}
   m_TextComponent: {fileID: 836594750}
   m_materialReferenceIndex: 1
