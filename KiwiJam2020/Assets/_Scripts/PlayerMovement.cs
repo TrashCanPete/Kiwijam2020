@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 audio.PlayAudio("Fog");
                 foghasPlayed = true;
-                Invoke("FogHornDelay", 5);
+                Invoke("FogHornDelay", 3);
             }
 
 
