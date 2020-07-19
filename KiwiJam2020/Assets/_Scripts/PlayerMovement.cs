@@ -163,6 +163,37 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        //closed
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            monsterAnim.SetBool("Close Mouth", true);
+
+            monsterAnim.SetBool("Half Closed", false);
+            monsterAnim.SetBool("Open Mouth", false);
+        }
+        //half open
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            mouthOpen = true;
+
+            monsterAnim.SetBool("Half Closed", true);
+
+            monsterAnim.SetBool("Open Mouth", false);
+            monsterAnim.SetBool("Close Mouth", false);
+        }
+        //open
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            mouthOpen = false;
+
+            monsterAnim.SetBool("Open Mouth", true);
+
+            monsterAnim.SetBool("Half Closed", false);
+            monsterAnim.SetBool("Close Mouth", false);
+
+        }
+
+
     }
     private void FixedUpdate()
     {
@@ -215,19 +246,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
 
         if (other.tag == "Chaser")
         {
             endText.SetActive(true);
-            
+            closed();
             Invoke("BackToMenu", 1);
         }
         //inside
         if (other.tag == "Anchor1")
         {
             camF.anchorNumber = 0;
-            monsterAnim.SetTrigger("Close Mouth");
+            //monsterAnim.SetTrigger("Close Mouth");
             
         }
         //Entrance of mouth
@@ -242,9 +272,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 MouthOpen();
             }
-            
-
-
         }
         //Outside
         if(other.tag == "Anchor3")
@@ -266,17 +293,30 @@ public class PlayerMovement : MonoBehaviour
     void MouthOpen()
     {
         mouthOpen = false;
+
         monsterAnim.SetBool("Open Mouth", true);
+
         monsterAnim.SetBool("Half Closed", false);
+        monsterAnim.SetBool("Close Mouth", false);
     }
 
     void HalfClosed()
     {
         mouthOpen = true;
+
         monsterAnim.SetBool("Half Closed", true);
+
         monsterAnim.SetBool("Open Mouth", false);
+        monsterAnim.SetBool("Close Mouth", false);
     }
 
+    void closed()
+    {
+        monsterAnim.SetBool("Close Mouth", true);
+
+        monsterAnim.SetBool("Half Closed", false);
+        monsterAnim.SetBool("Open Mouth", false);
+    }
 
     void BackToMenu()
     {

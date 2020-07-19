@@ -22,18 +22,7 @@ public class CamFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            anchorNumber = 2;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            anchorNumber = 1;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            anchorNumber = 0;
-        }
+
     }
     private void FixedUpdate()
     {
