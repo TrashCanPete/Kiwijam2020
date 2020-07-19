@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         boostParticle.Stop();
         engineBlowUp.Stop();
 
-        mouthOpen = false;
+        mouthOpen = true;
     }
 
     // Update is called once per frame
