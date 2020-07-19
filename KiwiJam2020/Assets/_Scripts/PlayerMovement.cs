@@ -266,13 +266,15 @@ public class PlayerMovement : MonoBehaviour
     void MouthOpen()
     {
         mouthOpen = false;
-        monsterAnim.SetTrigger("Open Mouth");
+        monsterAnim.SetBool("Open Mouth", true);
+        monsterAnim.SetBool("Half Closed", false);
     }
 
     void HalfClosed()
     {
         mouthOpen = true;
-        monsterAnim.SetTrigger("Half Close");
+        monsterAnim.SetBool("Half Closed", true);
+        monsterAnim.SetBool("Open Mouth", false);
     }
 
 
