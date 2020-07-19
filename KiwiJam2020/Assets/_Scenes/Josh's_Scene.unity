@@ -533,6 +533,22 @@ MonoBehaviour:
     mute: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: Boost
+    clip: {fileID: 8300000, guid: 84b71802ed1989f4eb328301270538ed, type: 3}
+    volumn: 1
+    pitch: 1
+    loop: 1
+    mute: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 0bb8c804394230d47a18a1e174574d5a, type: 3}
+    volumn: 0.1
+    pitch: 0.5
+    loop: 0
+    mute: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   songs:
   - name: Theme
     clip: {fileID: 8300000, guid: c587116743d6b0448b40836340bd9a6e, type: 3}
@@ -642,6 +658,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1288808591}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[0]
+      value: 
+      objectReference: {fileID: 9179013124886113520}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[1]
+      value: 
+      objectReference: {fileID: 313585018}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[2]
+      value: 
+      objectReference: {fileID: 9179013124886113519}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1288808591}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[0]
+      value: 
+      objectReference: {fileID: 9179013124886113520}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[1]
+      value: 
+      objectReference: {fileID: 313585018}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[2]
+      value: 
+      objectReference: {fileID: 9179013124886113519}
+    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
+        type: 3}
+      propertyPath: camAnchor.Array.data[3]
+      value: 
+      objectReference: {fileID: 1777633146}
     - target: {fileID: 3897390359717786683, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -697,56 +763,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1288808591}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[0]
-      value: 
-      objectReference: {fileID: 9179013124886113520}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[1]
-      value: 
-      objectReference: {fileID: 313585018}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[2]
-      value: 
-      objectReference: {fileID: 9179013124886113519}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1288808591}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[0]
-      value: 
-      objectReference: {fileID: 9179013124886113520}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[1]
-      value: 
-      objectReference: {fileID: 313585018}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[2]
-      value: 
-      objectReference: {fileID: 9179013124886113519}
-    - target: {fileID: 3897390359717786680, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
-        type: 3}
-      propertyPath: camAnchor.Array.data[3]
-      value: 
-      objectReference: {fileID: 1777633146}
     - target: {fileID: 3897390359717786681, guid: 7d73a1d3beb8f2d4b8e8a86f7fb39485,
         type: 3}
       propertyPath: m_Enabled

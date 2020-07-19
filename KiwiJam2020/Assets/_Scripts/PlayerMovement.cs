@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                audio.PlayAudio("Boost");
                 healthHandleAnim.SetBool("HandleShake", true); 
                 isBoosting = true;
                 engineSparks.Play();
@@ -125,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
+                audio.StopPlayingAudio("Boost");
                 healthHandleAnim.SetBool("HandleShake", false);
                 isBoosting = false;
                 boostParticle.Stop();
@@ -164,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
             chaserScript.speed = 36;
             engineDanger.SetActive(false);
             engineCritical.SetActive(false);
+            audio.StopPlayingAudio("Boost");
 
             //engine
             var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
@@ -174,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
             engineBlowUp.Play();
             jet.Stop();
             boostParticle.Stop();
+            audio.PlayAudio("Explosion");
 
             rb.velocity = transform.forward * 15;
 
@@ -344,8 +348,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Obstacle")
         {
-            if(hasEngine == true)
+            
+            if (hasEngine == true)
             {
+                audio.PlayAudio("Explosion");
                 Destroy(ship.gameObject);
                 var bodyTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(enginePieces, bodyTempPos, Quaternion.identity);
@@ -359,10 +365,13 @@ public class PlayerMovement : MonoBehaviour
                 jet.Stop();
                 boostParticle.Stop();
                 rb.velocity = transform.forward * 15;
+                Invoke("DelayEnd", 2);
+
 
             }
             else if (hasEngine == false)
             {
+                audio.PlayAudio("Explosion");
                 Destroy(ship.gameObject);
                 var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(shipPieces, tempPos, Quaternion.identity);
@@ -371,8 +380,14 @@ public class PlayerMovement : MonoBehaviour
                 jet.Stop();
                 boostParticle.Stop();
                 rb.velocity = transform.forward * 15;
+                audio.StopPlayingAudio("Boost");
+                Invoke("DelayEnd", 2);
             }
         }
+    }
+    void DelayEnd()
+    {
+        audio.StopPlayingAudio("Explosion");
     }
 
 }
