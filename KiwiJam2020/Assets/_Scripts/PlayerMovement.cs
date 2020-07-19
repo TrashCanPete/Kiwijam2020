@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public Animator monsterAnim;
+    public Animator healthHandleAnim;
 
     public bool mouthOpen;
 
@@ -70,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject enginePieces;
     public GameObject shipPieces;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,15 +112,17 @@ public class PlayerMovement : MonoBehaviour
             pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
             yaw = rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                healthHandleAnim.SetBool("HandleShake", true); 
                 isBoosting = true;
                 engineSparks.Play();
                 boostParticle.Play();
 
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            else if (Input.GetKeyUp(KeyCode.Space))
             {
+                healthHandleAnim.SetBool("HandleShake", false);
                 isBoosting = false;
                 boostParticle.Stop();
 

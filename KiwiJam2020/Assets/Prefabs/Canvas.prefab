@@ -683,6 +683,8 @@ GameObject:
   - component: {fileID: 5662768388692237922}
   - component: {fileID: 5662768388692237921}
   - component: {fileID: 5662768388692237920}
+  - component: {fileID: 5423060908654792815}
+  - component: {fileID: 783691181276007351}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -773,6 +775,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5423060908654792815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662768388692237927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9548d058564a4034b92dd79067bacb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerText: {fileID: 5662768387948605067}
+--- !u!114 &783691181276007351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662768388692237927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bac9cdfce74b54a8e14cab94d21701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  criticalText: {fileID: 5662768388774147132}
 --- !u!1 &5662768388774147106
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5662768388837513288}
   - component: {fileID: 5662768388837513289}
+  - component: {fileID: 5313276141925285584}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1018,6 +1047,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &5313276141925285584
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5662768388837513295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ba1dc557ff847c4fac5db39a467b80f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5662768389536458235
 GameObject:
   m_ObjectHideFlags: 0
