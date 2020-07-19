@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8211920495401126016}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5749452, y: 0.30277157, z: 1.6028963}
-  m_Center: {x: 0.0070293546, y: 0.042225122, z: 0.11468679}
+  m_Size: {x: 0.5749452, y: 0.37, z: 3.66}
+  m_Center: {x: 0.0070293546, y: 0.3, z: 0.11468679}
 --- !u!114 &8211920495401126019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   boostSpeed: 50
   boostSpeedValue: 10
   offset: 0
+  hasEngine: 0
   isBoosting: 0
   target: {fileID: 0}
   health: {fileID: 0}
@@ -81,6 +82,11 @@ MonoBehaviour:
   repairRate: 0.1
   damageRate: 0.5
   chaserScript: {fileID: 0}
+  jet: {fileID: 2891139365291987233}
+  engineBlowUp: {fileID: 1268398317177211265}
+  boostParticle: {fileID: 6728799937230813704}
+  engineSparks: {fileID: 8211920496698573569}
+  explosionParticle: {fileID: 5989000057077982368}
   particleManager: {fileID: 0}
   camF: {fileID: 0}
   engineCritical: {fileID: 0}
@@ -88,8 +94,13 @@ MonoBehaviour:
   criticalValue: 0.75
   DangerValue: 0.5
   addForce: {x: 0, y: 0, z: 0}
-  shipEngine: {fileID: 0}
-  ship: {fileID: 0}
+  shipEngine: {fileID: 2134847972007931932}
+  ship: {fileID: 5722871345670161426}
+  shipBody: {fileID: 1801193697260773187}
+  enginePieces: {fileID: 7132126994520892010, guid: 538a6bdc4684bd84f8433f693236491d,
+    type: 3}
+  shipPieces: {fileID: 1197454043524964184, guid: bd14386b98090b048836494c43ea7158,
+    type: 3}
 --- !u!54 &8211920495401126016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,9 +259,57 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8211920495653535636}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &2891139365291987233 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6478984150355095221, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6728799937230813704 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3213289518194853276, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5989000057077982368 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2516291718807083828, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1268398317177211265 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6948169814932239893, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8211920496698573574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1113226386, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8211920496698573569 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1113226389, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5722871345670161426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4511800903237581702, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1801193697260773187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7568785369526378711, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920495653535636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2134847972007931932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7806456440990945160, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
     type: 3}
   m_PrefabInstance: {fileID: 8211920495653535636}
   m_PrefabAsset: {fileID: 0}
