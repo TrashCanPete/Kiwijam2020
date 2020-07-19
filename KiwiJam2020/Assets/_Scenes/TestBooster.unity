@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 5662768388837513288, guid: 2a16cece935e43a408c8a8ac432a8593,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: -24.7
       objectReference: {fileID: 0}
     - target: {fileID: 5662768388521765431, guid: 2a16cece935e43a408c8a8ac432a8593,
         type: 3}
@@ -279,6 +279,32 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5662768387555575075, guid: 2a16cece935e43a408c8a8ac432a8593,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7910785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662768387555575075, guid: 2a16cece935e43a408c8a8ac432a8593,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7910785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662768387555575075, guid: 2a16cece935e43a408c8a8ac432a8593,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7910785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662768387555575075, guid: 2a16cece935e43a408c8a8ac432a8593,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662768387555575100, guid: 2a16cece935e43a408c8a8ac432a8593,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2077247e9d591924ba7a6e120d8c83e5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a16cece935e43a408c8a8ac432a8593, type: 3}
 --- !u!1 &734212978 stripped
