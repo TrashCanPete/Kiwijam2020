@@ -144,6 +144,12 @@ public class PlayerMovement : MonoBehaviour
                 engineDanger.SetActive(false);
             }
         }
+        else if (engineAlive == false)
+        {
+            rb.velocity = transform.forward * 0;
+            speed = 0;
+        }
+        
 
 
         if(engineHealth >= maxDamage)
@@ -167,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             jet.Stop();
             boostParticle.Stop();
 
-            rb.velocity = transform.forward * 24;
+            rb.velocity = transform.forward * 15;
 
         }
 
@@ -332,10 +338,12 @@ public class PlayerMovement : MonoBehaviour
 
                 var engineTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(shipPieces, engineTempPos, Quaternion.identity);
+                
                 engineAlive = false;
                 engineBlowUp.Play();
                 jet.Stop();
                 boostParticle.Stop();
+                rb.velocity = transform.forward * 15;
 
             }
             else if (hasEngine == false)
@@ -347,6 +355,7 @@ public class PlayerMovement : MonoBehaviour
                 explosionParticle.Play();
                 jet.Stop();
                 boostParticle.Stop();
+                rb.velocity = transform.forward * 15;
             }
         }
     }
