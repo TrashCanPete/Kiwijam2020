@@ -15,7 +15,7 @@ public class CamFollow : MonoBehaviour
     public int anchorNumber;
     void Start()
     {
-        anchorNumber = 1;
+        anchorNumber = 2;
 
     }
 

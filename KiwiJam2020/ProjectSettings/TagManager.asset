@@ -9,6 +9,8 @@ TagManager:
   - Anchor1
   - Anchor2
   - Anchor3
+  - Destroy
+  - Obstacle
   layers:
   - Default
   - TransparentFX

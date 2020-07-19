@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Colliding with Asteroidss
-    //Asteroids destroying on trigger
-    //starting chaser further back
+
+
     public bool engineAlive = true;
     [SerializeField] private float speed;
     public GameObject endText;
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private float offset;
 
+    [SerializeField] private bool hasEngine;
 
     private Vector3 rot;
     private float pitch;
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject shipEngine;
     public GameObject ship;
+    public GameObject shipBody;
     public GameObject enginePieces;
     public GameObject shipPieces;
 
@@ -131,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
             var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
             Destroy(shipEngine.gameObject);
             Instantiate(shipPieces, tempPos, Quaternion.identity);
+            hasEngine = false;
 
         }
 
@@ -211,6 +213,29 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Obstacle")
+        {
+            if(hasEngine == true)
+            {
+                Destroy(ship.gameObject);
+                var bodyTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
+                Instantiate(enginePieces, bodyTempPos, Quaternion.identity);
 
+                var engineTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
+                Instantiate(shipPieces, engineTempPos, Quaternion.identity);
+                engineAlive = false;
+
+            }
+            else if (hasEngine == false)
+            {
+                Destroy(ship.gameObject);
+                var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
+                Instantiate(shipPieces, tempPos, Quaternion.identity);
+                engineAlive = false;
+            }
+        }
+    }
 
 }

@@ -35,4 +35,12 @@ public class AsteroidController : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collide");
+        if (other.tag == "Destroy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

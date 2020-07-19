@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210315646}
   m_LocalRotation: {x: -0.10890052, y: 0.00000028300886, z: -0.000000102135736, w: -0.9940527}
-  m_LocalPosition: {x: -0, y: 1.86, z: -6.39}
+  m_LocalPosition: {x: 0, y: 3.31, z: -31.42}
   m_LocalScale: {x: -1.6, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -823,8 +823,18 @@ PrefabInstance:
         type: 3}
       propertyPath: shipPieces
       value: 
-      objectReference: {fileID: 7132126994520892010, guid: 538a6bdc4684bd84f8433f693236491d,
+      objectReference: {fileID: 1197454043524964184, guid: bd14386b98090b048836494c43ea7158,
         type: 3}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: speed
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: shipBody
+      value: 
+      objectReference: {fileID: 8211920496555712532}
     - target: {fileID: 8211920495401126018, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
       propertyPath: m_Center.y
@@ -842,6 +852,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d9bc95264d2e348997b3dd97c295b2, type: 3}
+--- !u!1 &8211920496555712532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1801193697260773187, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9179013124886113518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -918,6 +934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179013123786643556, guid: 5b175e1f103d2c645a87d829b5054c70,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b175e1f103d2c645a87d829b5054c70, type: 3}
