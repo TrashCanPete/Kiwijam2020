@@ -254,9 +254,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "Chaser")
         {
-            endText.SetActive(true);
+            //endText.SetActive(true);
             closed();
-            Invoke("BackToMenu", 1);
+            Invoke("BackToMenu", 2.5f);
         }
         //inside
         if (other.tag == "Anchor1")
@@ -269,28 +269,14 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Anchor2")
         {
             camF.anchorNumber = 1;
-            if(mouthOpen == true)
-            {
-                HalfClosed();
-            }
-            else if(mouthOpen == false)
-            {
-                MouthOpen();
-            }
+            HalfClosed();
         }
         //Outside
         if(other.tag == "Anchor3")
         {
             
             camF.anchorNumber = 2;
-            if (mouthOpen == true)
-            {
-                HalfClosed();
-            }
-            else if (mouthOpen == false)
-            {
-                MouthOpen();
-            }
+            MouthOpen();
         }
 
     }
