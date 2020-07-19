@@ -45,6 +45,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float damageRate;
 
     public ChaserMovement chaserScript;
+
+    public ParticleSystem jet;
+    public ParticleSystem engineBlowUp;
+    public ParticleSystem boostParticle;
+    public ParticleSystem engineSparks;
+    public ParticleSystem explosionParticle;
+
     public ParticleManager particleManager;
     public CamFollow camF;
 
@@ -64,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         minVelocity = transform.forward * 26;
         maxVelocity = transform.forward * 50;
         particleManager = GetComponentInChildren<ParticleManager>();
@@ -74,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
         rot = transform.eulerAngles;
         rb = GetComponent<Rigidbody>();
         endText.SetActive(false);
+
+        engineSparks.Stop();
+        explosionParticle.Stop();
+        boostParticle.Stop();
+        engineBlowUp.Stop();
     }
 
     // Update is called once per frame
@@ -94,11 +108,15 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 isBoosting = true;
+                engineSparks.Play();
+                boostParticle.Play();
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 isBoosting = false;
+                boostParticle.Stop();
+
 
             }
             if (health.value >= criticalValue)
@@ -116,7 +134,8 @@ public class PlayerMovement : MonoBehaviour
                 engineDanger.SetActive(false);
             }
         }
-        
+
+
         if(engineHealth >= maxDamage)
         {
             particleManager.explode = true;
@@ -133,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
             Destroy(shipEngine.gameObject);
             Instantiate(shipPieces, tempPos, Quaternion.identity);
             hasEngine = false;
+            engineSparks.Play();
+            engineBlowUp.Play();
 
         }
 
@@ -222,10 +243,12 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(ship.gameObject);
                 var bodyTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(enginePieces, bodyTempPos, Quaternion.identity);
+                explosionParticle.Play();
 
                 var engineTempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(shipPieces, engineTempPos, Quaternion.identity);
                 engineAlive = false;
+                engineBlowUp.Play();
 
             }
             else if (hasEngine == false)
@@ -234,6 +257,7 @@ public class PlayerMovement : MonoBehaviour
                 var tempPos = new Vector3(shipEngine.transform.position.x, shipEngine.transform.position.y, shipEngine.transform.position.z);
                 Instantiate(shipPieces, tempPos, Quaternion.identity);
                 engineAlive = false;
+                explosionParticle.Play();
             }
         }
     }

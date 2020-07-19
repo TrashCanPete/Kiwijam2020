@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &174919210 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8211920496698573569, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313585018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9179013124656513428, guid: 5b175e1f103d2c645a87d829b5054c70,
@@ -281,6 +287,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a16cece935e43a408c8a8ac432a8593, type: 3}
+--- !u!198 &684329427 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6728799937230813704, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &701393439 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5989000057077982368, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &734212978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 752230500747451357, guid: 5b175e1f103d2c645a87d829b5054c70,
@@ -516,6 +534,12 @@ MonoBehaviour:
 --- !u!1 &1488885428 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2134847972007931932, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1764777994 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1268398317177211265, guid: 07d9bc95264d2e348997b3dd97c295b2,
     type: 3}
   m_PrefabInstance: {fileID: 8211920496555712531}
   m_PrefabAsset: {fileID: 0}
@@ -835,6 +859,31 @@ PrefabInstance:
       propertyPath: shipBody
       value: 
       objectReference: {fileID: 8211920496555712532}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: engineBlowParticle
+      value: 
+      objectReference: {fileID: 174919210}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: explosionParticle
+      value: 
+      objectReference: {fileID: 701393439}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: boostParticle
+      value: 
+      objectReference: {fileID: 684329427}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: engineSparks
+      value: 
+      objectReference: {fileID: 174919210}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: engineBlowUp
+      value: 
+      objectReference: {fileID: 1764777994}
     - target: {fileID: 8211920495401126018, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
       propertyPath: m_Center.y
@@ -875,11 +924,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1288808591}
-    - target: {fileID: 9179013123628787150, guid: 5b175e1f103d2c645a87d829b5054c70,
-        type: 3}
-      propertyPath: speed
-      value: 28.5
-      objectReference: {fileID: 0}
     - target: {fileID: 9179013123628787151, guid: 5b175e1f103d2c645a87d829b5054c70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -934,11 +978,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9179013123786643556, guid: 5b175e1f103d2c645a87d829b5054c70,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -28.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b175e1f103d2c645a87d829b5054c70, type: 3}
