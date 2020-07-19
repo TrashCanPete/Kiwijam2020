@@ -311,6 +311,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 488328712}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1006431966 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2891139365291987233, guid: 07d9bc95264d2e348997b3dd97c295b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8211920496555712531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1210315646
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +890,11 @@ PrefabInstance:
       propertyPath: engineBlowUp
       value: 
       objectReference: {fileID: 1764777994}
+    - target: {fileID: 8211920495401126019, guid: 07d9bc95264d2e348997b3dd97c295b2,
+        type: 3}
+      propertyPath: jet
+      value: 
+      objectReference: {fileID: 1006431966}
     - target: {fileID: 8211920495401126018, guid: 07d9bc95264d2e348997b3dd97c295b2,
         type: 3}
       propertyPath: m_Center.y

@@ -154,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
             hasEngine = false;
             engineSparks.Play();
             engineBlowUp.Play();
+            jet.Stop();
+            boostParticle.Stop();
 
         }
 
@@ -214,15 +216,18 @@ public class PlayerMovement : MonoBehaviour
             endText.SetActive(true);
             Invoke("BackToMenu", 1);
         }
+        //inside
         if (other.tag == "Anchor1")
         {
             camF.anchorNumber = 0;
         }
+        //Entrance of mouth
         if (other.tag == "Anchor2")
         {
             camF.anchorNumber = 1;
 
         }
+        //Outside
         if(other.tag == "Anchor3")
         {
             camF.anchorNumber = 2;
@@ -249,6 +254,8 @@ public class PlayerMovement : MonoBehaviour
                 Instantiate(shipPieces, engineTempPos, Quaternion.identity);
                 engineAlive = false;
                 engineBlowUp.Play();
+                jet.Stop();
+                boostParticle.Stop();
 
             }
             else if (hasEngine == false)
@@ -258,6 +265,8 @@ public class PlayerMovement : MonoBehaviour
                 Instantiate(shipPieces, tempPos, Quaternion.identity);
                 engineAlive = false;
                 explosionParticle.Play();
+                jet.Stop();
+                boostParticle.Stop();
             }
         }
     }
