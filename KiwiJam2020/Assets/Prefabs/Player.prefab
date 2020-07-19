@@ -60,6 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127203b6098d934094306560927750f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterAnim: {fileID: 0}
+  mouthOpen: 0
   engineAlive: 1
   speed: 26
   endText: {fileID: 0}
@@ -198,6 +200,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8211920496290429880}
     m_Modifications:
+    - target: {fileID: 3913149276394558109, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
+        type: 3}
+      propertyPath: m_Name
+      value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113226389, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5934409245384846, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0015758367
@@ -240,15 +251,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934409245384846, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913149276394558109, guid: 8bdaabf9cfd574a4985d4b90fad3d597,
-        type: 3}
-      propertyPath: m_Name
-      value: Ship
-      objectReference: {fileID: 0}
-    - target: {fileID: 1113226389, guid: 8bdaabf9cfd574a4985d4b90fad3d597, type: 3}
-      propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
